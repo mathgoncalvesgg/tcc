@@ -25,3 +25,17 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
 }
 
 #-------------------------------------------------------------------------
+
+library(ipeadatar)
+
+database <- available_series(language = 'br')
+
+View(database)
+
+PPC <- ipeadata(code = "WEO_PIBPPCWEOBRA",language = 'br')
+
+View(PPC)
+
+territory <- available_territories(language = c("br"))
+
+View(territory)
