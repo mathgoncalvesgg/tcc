@@ -26,7 +26,13 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
 
 #-------------------------------------------------------------------------
 
+#Executando a biblioteca--------------------------------------------------
+
 library(ipeadatar)
+
+#-------------------------------------------------------------------------
+
+#Importando as bases de dados do site Ipeadata---------------------------
 
 database <- available_series(language = 'br')
 
@@ -39,3 +45,21 @@ View(PPC)
 territory <- available_territories(language = c("br"))
 
 View(territory)
+
+pobreza_nacional <- ipeadata(code = "PNADCA_TXPNUF", language = 'br')
+
+View(pobreza_nacional)
+
+pobreza_internacional <-ipeadata(code = "PNADCA_TXPIUF", language = 'br')
+
+View(pobreza_internacional)
+
+#Limpando a base de dados-----------------------------------------------
+
+#Preciso de um filtro para selecionar apenas as colunas 1 e 2
+
+pnacional = pobreza_nacional[1:11,2:3]
+
+#Dúvida: Pesquisar como colocar o filtro nas rows, exemplo tcode == 0
+            
+pinternacional = pobreza_internacional[1:11,2:3]
