@@ -63,3 +63,13 @@ pnacional = pobreza_nacional[1:11,2:3]
 #Dúvida: Pesquisar como colocar o filtro nas rows, exemplo tcode == 0
             
 pinternacional = pobreza_internacional[1:11,2:3]
+
+#Montando uma nova base para plotar gráfico da taxa de pobreza
+
+taxa_pobreza = ts(matrix(1,11,3))
+taxa_pobreza = pinternacional
+taxa_pobreza[,3] = pnacional[2]
+
+colnames(taxa_pobreza)[1] = 'Data'
+colnames(taxa_pobreza)[2] = 'Taxa Pobreza Internacional'
+colnames(taxa_pobreza)[3] = 'Taxa Pobreza Nacional'
