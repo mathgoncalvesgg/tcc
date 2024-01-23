@@ -71,5 +71,30 @@ taxa_pobreza = pinternacional
 taxa_pobreza[,3] = pnacional[2]
 
 colnames(taxa_pobreza)[1] = 'Data'
-colnames(taxa_pobreza)[2] = 'Taxa Pobreza Internacional'
-colnames(taxa_pobreza)[3] = 'Taxa Pobreza Nacional'
+colnames(taxa_pobreza)[2] = 'Taxa_Pobreza_Internacional'
+colnames(taxa_pobreza)[3] = 'Taxa_Pobreza_Nacional'
+
+#Plotar Gráfico Time Series das Taxas de Pobreza
+
+ggplotly(
+  taxa_pobreza %>%
+    mutate(Data = as.Date(Data)) %>%
+    ggplot() +
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Internacional, color = "black")) + #Dúvida: como fazer para a cor mudar?
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Nacional, color = "grey90")) + #Dúvida: como fazer para a cor mudar?
+    labs(color = "Legenda:", #Dúvida: qual a coerência do nome dessas cores?
+         x = "Data",
+         y = "Taxa de Pobreza") +
+    scale_color_viridis_d() +
+    scale_x_date(date_labels = "%m-%Y", date_breaks = "1 year") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.4),
+          panel.background = element_rect(fill = "white", color = "black"),
+          panel.grid = element_line(color = "grey90"),
+          panel.border = element_rect(color = "black", fill = NA),
+          legend.position = "none")
+)
+#Preciso que o eixo y seja melhor graduado, para observar melhor o valor no eixo
+
+#Limpando a base de dados do PPC
+
+ppc_brasil = PPC[33:43,2:3]
