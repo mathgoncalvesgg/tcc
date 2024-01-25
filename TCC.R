@@ -124,3 +124,10 @@ ggplotly(
           legend.position = "none")
 )
 
+#Importando o dataframe com a taxa de inflação segundo a Fundação Instituto Pesquisas Econômicas (FIPE)
+
+inflacao_fipe <-ipeadata(code = "FIPE_FIPE0001", language = 'br')
+
+#Limpando a base
+
+fipe <- inflacao_fipe[73:83,2:3]
