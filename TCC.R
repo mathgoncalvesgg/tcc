@@ -105,4 +105,22 @@ colnames(ppc_brasil)[2] = 'PPC'
 
 rm(ppc_nacional)
 
+#Plotando o gráfico ppc_brasil
+
+ggplotly(
+  ppc_brasil %>%
+    mutate(Data = as.Date(Data)) %>%
+    ggplot() +
+    geom_line(aes(x = Data, y = PPC), colour = 'blue') + #Dúvida: como fazer para a cor mudar?
+    labs(color = "Legenda:", #Dúvida: qual a coerência do nome dessas cores?
+         x = "Data",
+         y = "PPC brasileiro") +
+    scale_x_date(date_labels = "%m-%Y", date_breaks = "1 year") +
+    scale_y_continuous(limits = c(14000, 16000), breaks = scales::breaks_extended()) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.4),
+          panel.background = element_rect(fill = "white", color = "black"),
+          panel.grid = element_line(color = "grey90"),
+          panel.border = element_rect(color = "black", fill = NA),
+          legend.position = "none")
+)
 
