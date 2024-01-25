@@ -80,12 +80,11 @@ ggplotly(
   taxa_pobreza %>%
     mutate(Data = as.Date(Data)) %>%
     ggplot() +
-    geom_line(aes(x = Data, y = Taxa_Pobreza_Internacional, color = "black")) + #Dúvida: como fazer para a cor mudar?
-    geom_line(aes(x = Data, y = Taxa_Pobreza_Nacional, color = "grey90")) + #Dúvida: como fazer para a cor mudar?
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Internacional), colour = 'blue') + #Dúvida: como fazer para a cor mudar?
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Nacional),colour = 'yellow') + #Dúvida: como fazer para a cor mudar?
     labs(color = "Legenda:", #Dúvida: qual a coerência do nome dessas cores?
          x = "Data",
          y = "Taxa de Pobreza") +
-    scale_color_viridis_d() +
     scale_x_date(date_labels = "%m-%Y", date_breaks = "1 year") +
     theme(axis.text.x = element_text(angle = 90, vjust = 0.4),
           panel.background = element_rect(fill = "white", color = "black"),
@@ -95,6 +94,15 @@ ggplotly(
 )
 #Preciso que o eixo y seja melhor graduado, para observar melhor o valor no eixo
 
-#Limpando a base de dados do PPC
+#Limpando a base de dados do PPC e transformando em time series
 
 ppc_brasil = PPC[33:43,2:3]
+
+view(ppc_brasil)
+
+colnames(ppc_brasil)[1] = 'Data'
+colnames(ppc_brasil)[2] = 'PPC'
+
+rm(ppc_nacional)
+
+
