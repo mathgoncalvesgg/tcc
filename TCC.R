@@ -80,19 +80,19 @@ ggplotly(
   taxa_pobreza %>%
     mutate(Data = as.Date(Data)) %>%
     ggplot() +
-    geom_line(aes(x = Data, y = Taxa_Pobreza_Internacional), colour = 'blue') + #Dúvida: como fazer para a cor mudar?
-    geom_line(aes(x = Data, y = Taxa_Pobreza_Nacional),colour = 'yellow') + #Dúvida: como fazer para a cor mudar?
-    labs(color = "Legenda:", #Dúvida: qual a coerência do nome dessas cores?
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Internacional), colour = 'blue') + 
+    geom_line(aes(x = Data, y = Taxa_Pobreza_Nacional),colour = 'yellow') + 
+    labs(color = "Legenda:", 
          x = "Data",
          y = "Taxa de Pobreza") +
     scale_x_date(date_labels = "%m-%Y", date_breaks = "1 year") +
+    scale_y_continuous(limits = c(5, 38), breaks = scales::breaks_width(5)) +
     theme(axis.text.x = element_text(angle = 90, vjust = 0.4),
           panel.background = element_rect(fill = "white", color = "black"),
           panel.grid = element_line(color = "grey90"),
           panel.border = element_rect(color = "black", fill = NA),
           legend.position = "none")
 )
-#Preciso que o eixo y seja melhor graduado, para observar melhor o valor no eixo
 
 #Limpando a base de dados do PPC e transformando em time series
 
@@ -111,8 +111,8 @@ ggplotly(
   ppc_brasil %>%
     mutate(Data = as.Date(Data)) %>%
     ggplot() +
-    geom_line(aes(x = Data, y = PPC), colour = 'blue') + #Dúvida: como fazer para a cor mudar?
-    labs(color = "Legenda:", #Dúvida: qual a coerência do nome dessas cores?
+    geom_line(aes(x = Data, y = PPC), colour = 'lightblue') + 
+    labs(color = "Legenda:", 
          x = "Data",
          y = "PPC brasileiro") +
     scale_x_date(date_labels = "%m-%Y", date_breaks = "1 year") +
