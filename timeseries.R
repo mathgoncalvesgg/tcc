@@ -96,3 +96,13 @@ ggplotly(
           panel.border = element_rect(color = "black", fill = NA),
     )
 )
+
+#Fazendo as estatísticas da Base de Exportação e Importação
+
+summary(base9$value)
+
+sd(base9$value)
+
+summary(base8$value)
+
+sd(base8$value)
