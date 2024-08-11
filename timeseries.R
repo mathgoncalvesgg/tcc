@@ -232,3 +232,7 @@ layout(showlegend = TRUE,
 boxprodfert
 boximport
 boxexport
+
+#Plotando os box-plots no mesmo layout
+
+grid.arrange(boxprodfert, arrangeGrob(boximport, boxexport), ncol = 2)
