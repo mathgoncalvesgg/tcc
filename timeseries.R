@@ -177,3 +177,58 @@ ggplotly(
 ) %>% layout(showlegend = TRUE,
              legend = list(orientation = "v"))
 #----------
+
+#Atribuindo o Box-plot a objetos
+
+boxprodfert <- ggplot(general)+
+  geom_boxplot(aes(x = Data, y = Produção, color = "Produção"), outlier.colour = "black") +
+  labs(color = "Legenda:",
+       x = "Data",
+       y = "Quantidade de Fertilizantes (em toneladas de produto)") +
+  scale_x_date(date_labels = "%m/%Y", date_breaks = "3 months")+
+  scale_y_continuous(labels = scales::comma_format(big.mark = "."))+
+  theme(axis.text.x = element_text(angle = 90, size = 8),
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid = element_line(color = "grey90"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.position = "right") 
+layout(showlegend = TRUE,
+       legend = list(orientation = "v"))
+
+boximport <- ggplot(general)+
+  geom_boxplot(aes(x = Data, y = Importação, colour = "Importação"), outlier.colour = "black") +
+  labs(color = "Legenda:",
+       x = "Data",
+       y = "Quantidade de Fertilizantes (em toneladas de produto)") +
+  scale_x_date(date_labels = "%m/%Y", date_breaks = "3 months")+
+  scale_y_continuous(labels = scales::comma_format(big.mark = "."))+
+  scale_color_manual(values = "#481567FF")+
+  theme(axis.text.x = element_text(angle = 90, size = 8),
+        axis.title.y = element_text(size = 11),
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid = element_line(color = "grey90"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.position = "right") 
+layout(showlegend = TRUE,
+       legend = list(orientation = "v"))
+
+boxexport <- ggplot(general)+
+  geom_boxplot(aes(x = Data, y = Exportação, color = "Exportação"), outlier.colour = "black") +
+  labs(color = "Legenda:",
+       x = "Data",
+       y = "Quantidade de Fertilizantes (em toneladas de produto)") +
+  scale_x_date(date_labels = "%m/%Y", date_breaks = "3 months")+
+  scale_y_continuous(labels = scales::comma_format(big.mark = "."))+
+  scale_color_manual(values = "#FDE725FF")+
+  theme(axis.text.x = element_text(angle = 90, size = 8),
+        axis.title.y = element_text(size = 11),
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid = element_line(color = "grey90"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.position = "right") 
+layout(showlegend = TRUE,
+       legend = list(orientation = "v"))
+
+boxprodfert
+boximport
+boxexport
