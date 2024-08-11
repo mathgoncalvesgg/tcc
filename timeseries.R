@@ -79,3 +79,20 @@ sd(base10$value)
 colnames(base10)[3] = 'Fertilizantes'
 colnames(base10)[2] = 'Data'
 
+#Plotando o gráfico da time series produção de fertilizantes pelo ggplot
+
+ggplotly(
+  base10 %>%
+    mutate(Data = as.Date(Data)) %>%
+    ggplot() +
+    geom_line(aes(x = Data, y = Fertilizantes)) + 
+    labs(x = "Data",
+         y = "Produção de Fertilizantes (em toneladas de produto)") +
+    scale_x_date(date_labels = "%m-%Y", date_breaks = ("3 months")) +
+    scale_y_continuous(limits = c(400000,1000000), labels = scales::comma_format(big.mark = ".")) +
+    theme(axis.text.x = element_text(angle = 90, size = 6),
+          panel.background = element_rect(fill = "white", color = "black"),
+          panel.grid = element_line(color = "grey90"),
+          panel.border = element_rect(color = "black", fill = NA),
+    )
+)
