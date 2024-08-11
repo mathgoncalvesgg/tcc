@@ -47,3 +47,23 @@ library(grid)
 library(lattice)
 
 #----------------------------------------------------------------------
+
+########Importando as bases de dados do site Ipeadata---------------------------
+
+database <- available_series(language = 'br')
+
+View(database)
+
+#Base 8: Importação de Fertilizantes
+
+base8 <- ipeadata(code = "ANDA12_MFERTILIZ12", language = 'br')
+
+#Base 9: Exportações de Fertilizantes
+
+base9 <- ipeadata(code = "ANDA12_NPKFERTILIZ12", language = 'br')
+
+#Base 10: Produção de fertilizantes
+
+base10 <- ipeadata(code = "ANDA12_PFERTILIZ12", language = 'br')
+
+#------------------------------------------------------------------------
