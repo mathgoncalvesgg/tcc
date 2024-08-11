@@ -236,3 +236,7 @@ boxexport
 #Plotando os box-plots no mesmo layout
 
 grid.arrange(boxprodfert, arrangeGrob(boximport, boxexport), ncol = 2)
+
+#Montando a time series da produção de fertilizantes
+
+prodfert = ts(base10$Fertilizantes, start = c(1998,1), end = c(2024,1), frequency = 12)
