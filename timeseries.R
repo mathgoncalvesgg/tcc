@@ -145,3 +145,8 @@ ggplotly(
 ) %>% layout(showlegend = TRUE,
              legend = list(orientation = "v"))
 
+#Fazendo a média móvel da produção de fertilizantes
+
+media_movel = ma(general$Produção, order = 3, centre = TRUE)
+
+view(media_movel)
