@@ -246,3 +246,13 @@ prodfert = ts(base10$Fertilizantes, start = c(1998,1), end = c(2024,1), frequenc
 decompa = decompose(prodfert, type = "multiplicative") 
 
 plot(decompa)
+
+#Tendência, Sazonalidade e Erros Aleatórios por trimestre
+
+triprodfert = ts(base10$Fertilizantes, start = c(1998,1), end = c(2024,1), frequency = 4)
+
+decomp = decompose(triprodfert, type = "multiplicative")
+
+decomp$trend
+decomp$seasonal
+decomp$random
