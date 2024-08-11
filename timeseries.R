@@ -73,3 +73,9 @@ base10 <- ipeadata(code = "ANDA12_PFERTILIZ12", language = 'br')
 summary(base10$value)
 
 sd(base10$value)
+
+# Nomeando as colunas
+
+colnames(base10)[3] = 'Fertilizantes'
+colnames(base10)[2] = 'Data'
+
