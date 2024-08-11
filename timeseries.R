@@ -114,3 +114,9 @@ general = ts(matrix(1,137,4))
 general = base10[181:317,2:3]
 general[,3] = base8[181:317,3]
 general[,4] = base9[,3]
+
+#Nomeando as colunas da base general
+
+colnames(general)[2] = "Produção"
+colnames(general)[3] = "Importação"
+colnames(general)[4] = "Exportação"
