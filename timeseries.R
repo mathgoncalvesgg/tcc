@@ -67,3 +67,9 @@ base9 <- ipeadata(code = "ANDA12_NPKFERTILIZ12", language = 'br')
 base10 <- ipeadata(code = "ANDA12_PFERTILIZ12", language = 'br')
 
 #------------------------------------------------------------------------
+
+#Verificando a estatística descritiva da base de produção de fertilizantes 
+
+summary(base10$value)
+
+sd(base10$value)
