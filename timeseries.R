@@ -25,3 +25,25 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
 }
 
 #--------------------------------------------------------------------------
+
+#Executando as bibliotecas--------------------------------------------------
+
+library(ipeadatar)
+
+library(dplyr)
+
+library(measurements)
+
+library(viridis)
+
+library(ggplot2)
+
+library(plotly)
+
+library(gridExtra)
+
+library(grid)
+
+library(lattice)
+
+#----------------------------------------------------------------------
