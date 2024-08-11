@@ -120,3 +120,28 @@ general[,4] = base9[,3]
 colnames(general)[2] = "Produção"
 colnames(general)[3] = "Importação"
 colnames(general)[4] = "Exportação"
+
+#Plotando o gráfico da produção, exportação e importação de fertilizantes
+
+ggplotly(
+  general %>%
+    mutate(Data = as.Date(Data)) %>%
+    ggplot() +
+    geom_line(aes(x = Data, y = Produção, color = "Produção")) + 
+    geom_line(aes(x = Data, y = Importação, color = "Importação")) +
+    geom_line(aes(x = Data, y = Exportação, color = "Exportação")) +
+    labs(color = "Legenda:",
+         x = "Data",
+         y = "Quantidade de Fertilzantes (ton)") +
+    scale_x_date(date_labels = "%m-%Y", date_breaks = "3 months") +
+    scale_y_continuous(limits = c(8000,4500000), breaks = seq(8000,4500000, by = 400000), labels = scales::comma_format(big.mark = ".")) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.4),
+          panel.background = element_rect(fill = "white", color = "black"),
+          panel.grid = element_line(color = "grey90"),
+          panel.border = element_rect(color = "black", fill = NA),
+          legend.title = element_text(colour = "black", size = 10, face = "bold"),
+          legend.text = element_text(colour = "black", size = 9),
+          legend.position = "right")
+) %>% layout(showlegend = TRUE,
+             legend = list(orientation = "v"))
+
