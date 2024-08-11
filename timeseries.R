@@ -106,3 +106,11 @@ sd(base9$value)
 summary(base8$value)
 
 sd(base8$value)
+
+#Montando o dataframe general
+
+general = ts(matrix(1,137,4))
+
+general = base10[181:317,2:3]
+general[,3] = base8[181:317,3]
+general[,4] = base9[,3]
