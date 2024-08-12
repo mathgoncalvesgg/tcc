@@ -256,3 +256,14 @@ decomp = decompose(triprodfert, type = "multiplicative")
 decomp$trend
 decomp$seasonal
 decomp$random
+
+########################Comparando os modelos de Previsão##################################
+
+#Time series da produção de fertilizantes
+prodfert = ts(base10$Fertilizantes, start = c(1998,1), end = c(2024,1), frequency = 12)
+
+#Separando a base da produção de fertilizantes para rodar o modelo e para prever
+
+modelprod = ts(base10$Fertilizantes, start = c(1998,1), end = c(2022,12), frequency = 12)
+
+prevprod = ts(base10$Fertilizantes, start = c(2023,1), end = c(2024,1), frequency = 12)
