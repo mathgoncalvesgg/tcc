@@ -450,3 +450,20 @@ checkresiduals(modholtsazonalad)
 #os resíduos são correlacionados e o mesmo o modelo Hw multiplicativo apresentando
 #MAPE de 8,91% o modelo não seria o mais adequado para realizar tal tipo de 
 #previsão
+
+#####Teste de Kolmogorov-Smirnov#######
+
+ks.test(modholtsazonalmult$residuals,"pnorm", mean(modholtsazonalmult$residuals), 
+        sd(modholtsazonalmult$residuals))
+
+# p-valor = 0.8862 >> 0,05 - Rejeita-se H0 e aceita-se a Hipótese alternativa H1
+#ou seja, os resíduos não seguem uma distribuição normal
+
+# confirmada a existência de autocorrelação serial e não normalidade dos resíduos
+# Podemos verificar a não estacionariedade de variância
+#Como existe autocorrelação entre os resíduos e/ou eles não tem uma distribuição normal 
+#nós teríamos de fazer um outro tipo de modelagem como modelos heterocedasticos ou 
+#redes neurais
+
+ks.test(modholtsazonalad$residuals,"pnorm", mean(modholtsazonalad$residuals), 
+        sd(modholtsazonalad$residuals))
