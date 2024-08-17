@@ -467,3 +467,9 @@ ks.test(modholtsazonalmult$residuals,"pnorm", mean(modholtsazonalmult$residuals)
 
 ks.test(modholtsazonalad$residuals,"pnorm", mean(modholtsazonalad$residuals), 
         sd(modholtsazonalad$residuals))
+
+# verificar se existe efeitos ARCH
+
+ArchTest(modholtsazonalmult$residuals)
+
+ArchTest(modholtsazonalad$residuals)
