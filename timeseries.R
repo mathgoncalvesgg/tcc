@@ -305,3 +305,9 @@ compmodelmult = ts(compmult,start = c(2023,1), end = c(2024,1), frequency = 12)
 
 qualihwmult = accuracy(compmodelmult, prevprod)
 qualihwmult
+
+###########Identificando qual a característica do Erro, da Tendência e da Sazonalidade########
+
+modelprod.ets <- ets(modelprod, model = "ZZZ")
+
+summary(modelprod.ets)
