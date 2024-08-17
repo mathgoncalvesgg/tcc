@@ -386,3 +386,26 @@ compmodholtdamped = ts(compholtdamped, start = c(2023,1), end = c(2024,1), frequ
 qualiholtdamped = accuracy(compmodholtdamped, prevprod)
 
 qualiholtdamped
+
+#Acurácia do Modelo de previsão Holt-Winters aditivo (Série temporal com tendência e com sazonalidade)
+
+modholtsazonalad = hw(modelprod,h = 13,seasonal = "additive")
+
+#Valores previstos
+
+modholtsazonalad
+
+#Visualização do modelo gerado
+
+modholtsazonalad$model
+
+#Utilização dos valores médios da previsão para comparar com os valores do prevprod
+
+comp = modholtsazonalad$mean
+
+compmodel = ts(comp,start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Verificando a qualidade do meu modelo por meio dos erros
+
+qualihwadd = accuracy(compmodel,prevprod)
+qualihwadd
