@@ -362,3 +362,27 @@ compmodholt = ts(compholt,start = c(2023,1), end = c(2024,1), frequency = 12)
 qualiholt = accuracy(compmodholt, prevprod)
 
 qualiholt
+
+################Acurácia do Modelo de Holt com tendência e amortecido##########################
+
+modholtdamped = holt(modelprod, h = 13, damped = TRUE)
+
+#Valores previstos
+
+modholtdamped
+
+#Modelo gerado
+
+modholtdamped$model
+
+#Utilização dos valores médios da previsão para comparar com os valores do prevprod
+
+compholtdamped = modholtdamped$mean
+
+compmodholtdamped = ts(compholtdamped, start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Verificando a qualidade do meu modelo por meio dos erros
+
+qualiholtdamped = accuracy(compmodholtdamped, prevprod)
+
+qualiholtdamped
