@@ -338,3 +338,27 @@ compmodses = ts(compses,start = c(2023,1), end = c(2024,1), frequency = 12)
 qualises = accuracy(compmodses,prevprod)
 
 qualises
+
+###########Acurácia do Modelo de Suavização Exponencial Holt (SEH)#######################
+
+modholt = holt(modelprod, h = 13)
+
+#Valores previstos
+
+modholt
+
+#Modelo gerado
+
+modholt$model
+
+#Utilização dos valores médios da previsão para comparar com os valores do prevprod
+
+compholt = modholt$mean
+
+compmodholt = ts(compholt,start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Verificando a qualidade do meu modelo por meio dos erros
+
+qualiholt = accuracy(compmodholt, prevprod)
+
+qualiholt
