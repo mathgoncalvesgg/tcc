@@ -409,3 +409,10 @@ compmodel = ts(comp,start = c(2023,1), end = c(2024,1), frequency = 12)
 
 qualihwadd = accuracy(compmodel,prevprod)
 qualihwadd
+
+#Tabela das acurácias das previsões
+
+modelos = c("HWadditive", "Hwmultiplicative","SES", "Holt", "Holtdamped", "MediaMovel")
+mape = c(qualihwadd[5],qualihwmult[5], qualises[5],qualiholt[5],qualiholtdamped[5], qualimodmm[5])
+tabela = data.frame(modelos, mape)
+tabela
