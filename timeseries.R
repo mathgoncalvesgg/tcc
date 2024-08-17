@@ -267,3 +267,18 @@ prodfert = ts(base10$Fertilizantes, start = c(1998,1), end = c(2024,1), frequenc
 modelprod = ts(base10$Fertilizantes, start = c(1998,1), end = c(2022,12), frequency = 12)
 
 prevprod = ts(base10$Fertilizantes, start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Acurácia Média móvel
+
+newmm = ts(matrix(1,13,1))
+
+view(newmm)
+
+newmm = media_movel[121:133]
+
+modmm = ts(newmm,start = c(2013,1), end = c(2024,1), frequency = 12)
+
+modmm
+
+qualimodmm = accuracy(newmm,prevprod)
+qualimodmm
