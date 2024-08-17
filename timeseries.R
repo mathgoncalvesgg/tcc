@@ -416,3 +416,17 @@ modelos = c("HWadditive", "Hwmultiplicative","SES", "Holt", "Holtdamped", "Media
 mape = c(qualihwadd[5],qualihwmult[5], qualises[5],qualiholt[5],qualiholtdamped[5], qualimodmm[5])
 tabela = data.frame(modelos, mape)
 tabela
+
+# Analisando os resíduos (erros) das previsões
+# Condições:
+# não podem ser correlacionados; se forem correlacionados ficaram informações
+# nos resíduos que deveriam estar no modelo
+# devem possui média zero, caso não seja então as previsões são viesadas
+
+autoplot(modholtsazonalmult$residuals)
+
+acf(modholtsazonalmult$residuals)
+
+autoplot(modholtsazonalad$residuals)
+
+acf(modholtsazonalad$residuals)
