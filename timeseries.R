@@ -282,3 +282,26 @@ modmm
 
 qualimodmm = accuracy(newmm,prevprod)
 qualimodmm
+
+#Acurácia do Modelo de previsão Holt-Winters multiplicativo (Série temporal com tendência e com sazonalidade)
+
+modholtsazonalmult = hw(modelprod,h = 13,seasonal = "multiplicative")
+
+#Valores previstos
+
+modholtsazonalmult
+
+#Visualização do modelo gerado
+
+modholtsazonalmult$model
+
+#Utilização dos valores médios da previsão para comparar com os valores do prevprod
+
+compmult = modholtsazonalmult$mean
+
+compmodelmult = ts(compmult,start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Verificando a qualidade do meu modelo por meio dos erros
+
+qualihwmult = accuracy(compmodelmult, prevprod)
+qualihwmult
