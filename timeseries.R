@@ -311,3 +311,30 @@ qualihwmult
 modelprod.ets <- ets(modelprod, model = "ZZZ")
 
 summary(modelprod.ets)
+
+###########Acurácia do Modelo de Suavização Exponencial Simples (SES)#######################
+
+modses = ses(modelprod,h = 13)
+
+#Valores previstos
+
+modses
+
+#Visualização do modelo gerado
+
+modses$model
+
+options(scipen = 999)
+autoplot(modses)
+
+#Utilização dos valores médios da previsão para comparar com os valores do prevprod
+
+compses = modses$mean
+
+compmodses = ts(compses,start = c(2023,1), end = c(2024,1), frequency = 12)
+
+#Verificando a qualidade do meu modelo por meio dos erros
+
+qualises = accuracy(compmodses,prevprod)
+
+qualises
