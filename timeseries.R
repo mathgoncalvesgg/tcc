@@ -430,3 +430,23 @@ acf(modholtsazonalmult$residuals)
 autoplot(modholtsazonalad$residuals)
 
 acf(modholtsazonalad$residuals)
+
+#Observando o gráfico percebemos que existem lags que ultrapassam a linha tracejada,
+#ou seja, existem lags que ultrapassam a linha de autocorrelação
+# O fato de muitos lags passarem a linha de autocorrelação indica que os meus resíduos
+#tem autocorrelação com os meus dados
+
+checkresiduals(modholtsazonalmult)
+
+checkresiduals(modholtsazonalad)
+
+#Ao observar o gráfico da função de autocorrelação verificamos que existem lags 
+#que indicam a autocorrelação dos meus resíduos com os meus dados
+#principalmente a cada término de ciclo anual
+#no histograma nota-se uma curva normal, ou seja, uma boa aproximação desse modelo a uma distribuição normal.
+
+#Porém ao fazer o L-jung-Box Test o p-valor deu muito abaixo que 1% de significância
+#deu 0,0000128. Sendo assim eu rejeito H0 e aceito H1 (hipótese alternativa) que diz
+#os resíduos são correlacionados e o mesmo o modelo Hw multiplicativo apresentando
+#MAPE de 8,91% o modelo não seria o mais adequado para realizar tal tipo de 
+#previsão
